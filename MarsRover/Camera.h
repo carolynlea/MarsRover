@@ -12,6 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Camera : NSObject
 
+@property (nonatomic) int identifier;
+@property (nonatomic) NSString *name;
+@property (nonatomic) int roverId;
+@property (nonatomic) NSString *fullName;
+
 @end
 
 NS_ASSUME_NONNULL_END

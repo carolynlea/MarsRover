@@ -12,6 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Cache : NSObject
 
+@property (nonatomic, readonly) NSDictionary *cache;
+@property (nonatomic, readonly) NSString *queueString;
+
+-(NSDictionary *)cache;
+-(void)value;
+-(void)clear;
+
 @end
 
 NS_ASSUME_NONNULL_END

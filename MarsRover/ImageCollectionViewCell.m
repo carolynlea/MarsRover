@@ -10,4 +10,10 @@
 
 @implementation ImageCollectionViewCell
 
+-(void)prepareForReuse
+{
+    [super prepareForReuse];
+    _imageView.image = [UIImage imageNamed:@"MarsPlaceholder"];
+}
+
 @end

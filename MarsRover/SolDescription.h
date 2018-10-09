@@ -7,10 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Camera.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SolDescription : NSObject
+
+@property (nonatomic) int sol;
+@property (nonatomic) int totalPhotos;
+@property (nonatomic) NSArray<Camera *> *cameras;
+
+-(instancetype)initWithSol:(int)sol totalPhotos:(int)totalPhotos cameras:(NSArray *)cameras;
+-(nullable instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end
 

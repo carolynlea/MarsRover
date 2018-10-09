@@ -16,10 +16,13 @@
 		DE1B522D216D3B2500EB886C /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1B522C216D3B2500EB886C /* PhotoDetailViewController.swift */; };
 		DE1B522F216D3B9A00EB886C /* MarsRover.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1B522E216D3B9A00EB886C /* MarsRover.swift */; };
 		DE1B5232216D3BC500EB886C /* Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B5231216D3BC500EB886C /* Cache.m */; };
-		DE1B5235216D3BD900EB886C /* MarsPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B5234216D3BD900EB886C /* MarsPhoto.m */; };
 		DE1B5238216D3BF400EB886C /* SolDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B5237216D3BF400EB886C /* SolDescription.m */; };
 		DE1B523B216D3C0900EB886C /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B523A216D3C0900EB886C /* Camera.m */; };
 		DE1B523E216D3C4900EB886C /* ImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B523D216D3C4900EB886C /* ImageCollectionViewCell.m */; };
+		DE1B5240216D567700EB886C /* MarsPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1B523F216D567700EB886C /* MarsPhoto.swift */; };
+		DE1B5242216D56F300EB886C /* MarsRoverClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1B5241216D56F300EB886C /* MarsRoverClient.swift */; };
+		DE1B5244216D57AD00EB886C /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1B5243216D57AD00EB886C /* ConcurrentOperation.swift */; };
+		DE1B5246216D57FE00EB886C /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1B5245216D57FE00EB886C /* FetchPhotoOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,14 +40,16 @@
 		DE1B522E216D3B9A00EB886C /* MarsRover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRover.swift; sourceTree = "<group>"; };
 		DE1B5230216D3BC500EB886C /* Cache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cache.h; sourceTree = "<group>"; };
 		DE1B5231216D3BC500EB886C /* Cache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cache.m; sourceTree = "<group>"; };
-		DE1B5233216D3BD900EB886C /* MarsPhoto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarsPhoto.h; sourceTree = "<group>"; };
-		DE1B5234216D3BD900EB886C /* MarsPhoto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarsPhoto.m; sourceTree = "<group>"; };
 		DE1B5236216D3BF400EB886C /* SolDescription.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SolDescription.h; sourceTree = "<group>"; };
 		DE1B5237216D3BF400EB886C /* SolDescription.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SolDescription.m; sourceTree = "<group>"; };
 		DE1B5239216D3C0900EB886C /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		DE1B523A216D3C0900EB886C /* Camera.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Camera.m; sourceTree = "<group>"; };
 		DE1B523C216D3C4900EB886C /* ImageCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCollectionViewCell.h; sourceTree = "<group>"; };
 		DE1B523D216D3C4900EB886C /* ImageCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCollectionViewCell.m; sourceTree = "<group>"; };
+		DE1B523F216D567700EB886C /* MarsPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsPhoto.swift; sourceTree = "<group>"; };
+		DE1B5241216D56F300EB886C /* MarsRoverClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRoverClient.swift; sourceTree = "<group>"; };
+		DE1B5243216D57AD00EB886C /* ConcurrentOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		DE1B5245216D57FE00EB886C /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,13 +86,15 @@
 				DE1B5214216D392400EB886C /* AppDelegate.m */,
 				DE1B5230216D3BC500EB886C /* Cache.h */,
 				DE1B5231216D3BC500EB886C /* Cache.m */,
-				DE1B5233216D3BD900EB886C /* MarsPhoto.h */,
-				DE1B5234216D3BD900EB886C /* MarsPhoto.m */,
 				DE1B5236216D3BF400EB886C /* SolDescription.h */,
 				DE1B5237216D3BF400EB886C /* SolDescription.m */,
 				DE1B5239216D3C0900EB886C /* Camera.h */,
 				DE1B523A216D3C0900EB886C /* Camera.m */,
 				DE1B522E216D3B9A00EB886C /* MarsRover.swift */,
+				DE1B523F216D567700EB886C /* MarsPhoto.swift */,
+				DE1B5241216D56F300EB886C /* MarsRoverClient.swift */,
+				DE1B5243216D57AD00EB886C /* ConcurrentOperation.swift */,
+				DE1B5245216D57FE00EB886C /* FetchPhotoOperation.swift */,
 				DE1B522A216D3AE900EB886C /* PhotosCollectionViewController.swift */,
 				DE1B522C216D3B2500EB886C /* PhotoDetailViewController.swift */,
 				DE1B523C216D3C4900EB886C /* ImageCollectionViewCell.h */,
@@ -176,13 +183,16 @@
 				DE1B5232216D3BC500EB886C /* Cache.m in Sources */,
 				DE1B522B216D3AE900EB886C /* PhotosCollectionViewController.swift in Sources */,
 				DE1B523E216D3C4900EB886C /* ImageCollectionViewCell.m in Sources */,
+				DE1B5242216D56F300EB886C /* MarsRoverClient.swift in Sources */,
+				DE1B5244216D57AD00EB886C /* ConcurrentOperation.swift in Sources */,
 				DE1B522F216D3B9A00EB886C /* MarsRover.swift in Sources */,
 				DE1B5223216D392500EB886C /* main.m in Sources */,
 				DE1B523B216D3C0900EB886C /* Camera.m in Sources */,
 				DE1B522D216D3B2500EB886C /* PhotoDetailViewController.swift in Sources */,
 				DE1B5238216D3BF400EB886C /* SolDescription.m in Sources */,
-				DE1B5235216D3BD900EB886C /* MarsPhoto.m in Sources */,
 				DE1B5215216D392400EB886C /* AppDelegate.m in Sources */,
+				DE1B5246216D57FE00EB886C /* FetchPhotoOperation.swift in Sources */,
+				DE1B5240216D567700EB886C /* MarsPhoto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

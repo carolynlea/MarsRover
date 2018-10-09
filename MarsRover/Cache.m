@@ -10,4 +10,9 @@
 
 @implementation Cache
 
+-(NSDictionary *)cache
+{
+    
+}
+
 @end
