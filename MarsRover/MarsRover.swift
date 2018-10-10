@@ -49,10 +49,10 @@ struct MarsRover: Codable
         return formatter
     }()
     
-    static var jsonDecoder: JSONDecoder {
-        let result = JSONDecoder()
-        result.keyDecodingStrategy = .convertFromSnakeCase
-        result.dateDecodingStrategy = .formatted(dateFormatter)
-        return result
-    }
+//    static var jsonDecoder: JSONDecoder {
+//        let result = JSONDecoder()
+//        result.keyDecodingStrategy = .convertFromSnakeCase
+//        result.dateDecodingStrategy = .formatted(dateFormatter)
+//        return result
+//    }
 }

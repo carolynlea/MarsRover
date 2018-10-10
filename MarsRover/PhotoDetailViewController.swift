@@ -8,24 +8,41 @@
 
 import UIKit
 
-class PhotoDetailViewController: UIViewController {
+class PhotoDetailViewController: UIViewController
+{
 
     @IBOutlet weak var imageView: UIImageView!
-    override func viewDidLoad() {
+    
+    var photo: MarsPhoto?
+    {
+        didSet
+        {
+            updateViews()
+        }
+    }
+    
+    private func updateViews()
+    {
+        guard let photo = photo, isViewLoaded else {return}
+        
+        do
+        {
+            let data = try Data(contentsOf: photo.imageURL.usingHTTPS!)
+            imageView.image = UIImage(data: data)?.filtered()
+        }
+        catch
+        {
+            NSLog("error getting image: \(error)")
+        }
+    }
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

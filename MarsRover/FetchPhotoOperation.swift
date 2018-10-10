@@ -11,7 +11,7 @@ import Foundation
 class FetchPhotoOperation: ConcurrentOperation
 {
     
-    init(photoReference: MarsPhotoReference, session: URLSession = URLSession.shared)
+    init(photoReference: MarsPhoto, session: URLSession = URLSession.shared)
     {
         self.photoReference = photoReference
         self.session = session
@@ -45,7 +45,7 @@ class FetchPhotoOperation: ConcurrentOperation
     
     // MARK: Properties
     
-    let photoReference: MarsPhotoReference
+    let photoReference: MarsPhoto
     
     private let session: URLSession
     

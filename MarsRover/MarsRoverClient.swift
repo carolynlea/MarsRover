@@ -29,11 +29,11 @@ class MarsRoverClient
     func fetchPhotos(from rover: MarsRover,
                      onSol sol: Int,
                      using session: URLSession = URLSession.shared,
-                     completion: @escaping ([MarsPhotoReference]?, Error?) -> Void)
+                     completion: @escaping ([MarsPhoto]?, Error?) -> Void)
     {
         
         let url = self.url(forPhotosfromRover: rover.name, on: sol)
-        fetch(from: url, using: session) { (dictionary: [String : [MarsPhotoReference]]?, error: Error?) in
+        fetch(from: url, using: session) { (dictionary: [String : [MarsPhoto]]?, error: Error?) in
             guard let photos = dictionary?["photos"] else {
                 completion(nil, error)
                 return
@@ -60,7 +60,7 @@ class MarsRoverClient
             }
             
             do {
-                let jsonDecoder = MarsPhotoReference.jsonDecoder
+                let jsonDecoder = MarsPhoto.jsonDecoder
                 let decodedObject = try jsonDecoder.decode(T.self, from: data)
                 completion(decodedObject, nil)
             } catch {

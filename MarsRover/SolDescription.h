@@ -15,10 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) int sol;
 @property (nonatomic) int totalPhotos;
-@property (nonatomic) NSArray<Camera *> *cameras;
+@property (nonatomic) NSArray<NSString *> *cameras;
 
--(instancetype)initWithSol:(int)sol totalPhotos:(int)totalPhotos cameras:(NSArray *)cameras;
--(nullable instancetype)initWithDictionary:(NSDictionary *)dictionary;
+-(instancetype)initWithSol:(int)sol totalPhotos:(int)totalPhotos cameras:(NSArray<NSString *> *)cameras;
+
+-(nullable instancetype)initWithDictionary:(NSDictionary<NSString *, id> *)dictionary;
 
 @end
 

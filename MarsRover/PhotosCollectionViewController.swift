@@ -13,31 +13,41 @@ private let reuseIdentifier = "Cell"
 class PhotosCollectionViewController: UICollectionViewController
 {
     private let client = MarsRoverClient()
-    private let cache = Cache<Int, UIImage>()
+    private let cache = Cache<Key, Value>()
     private let photoFetchQueue = OperationQueue()
     private let imageFilteringQueue = OperationQueue()
     private var operations = [Int : Operation]()
+    let solLabel = UILabel()
     
-    private var roverInfo: MarsRover? {
-        didSet {
+    private var roverInfo: MarsRover?
+    {
+        didSet
+        {
             solDescription = roverInfo?.solDescriptions[10]
         }
     }
-    private var solDescription: SolDescription? {
-        didSet {
+    private var solDescription: SolDescription?
+    {
+        didSet
+        {
             if let rover = roverInfo,
-                let sol = solDescription?.sol {
+                let sol = solDescription?.sol
+            {
                 photoReferences = []
                 client.fetchPhotos(from: rover, onSol: sol) { (photoRefs, error) in
+                    
                     if let e = error { NSLog("Error fetching photos for \(rover.name) on sol \(sol): \(e)"); return }
+                    
                     self.photoReferences = photoRefs ?? []
                     DispatchQueue.main.async { self.updateViews() }
                 }
             }
         }
     }
-    private var photoReferences = [MarsPhotoReference]() {
-        didSet {
+    private var photoReferences = [MarsPhoto]()
+    {
+        didSet
+        {
             cache.clear()
             DispatchQueue.main.async { self.collectionView?.reloadData() }
         }
@@ -91,12 +101,12 @@ class PhotosCollectionViewController: UICollectionViewController
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
+    override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
     {
         if photoReferences.count > 0
         {
             let photoRef = photoReferences[indexPath.item]
-            operations[photoRef.id]?.cancel()
+            operations[photoRef.identifier]?.cancel()
         }
         else
         {
@@ -104,6 +114,30 @@ class PhotosCollectionViewController: UICollectionViewController
                 operation.cancel()
             }
         }
+    }
+    
+    private func configureTitleView() {
+        
+        let font = UIFont.systemFont(ofSize: 30)
+        let attrs = [NSAttributedString.Key.font: font]
+        
+        let prevButton = UIButton(type: .system)
+        let prevTitle = NSAttributedString(string: "<", attributes: attrs)
+        prevButton.setAttributedTitle(prevTitle, for: .normal)
+        prevButton.addTarget(self, action: #selector(goToPreviousSol(_:)), for: .touchUpInside)
+        
+        let nextButton = UIButton(type: .system)
+        let nextTitle = NSAttributedString(string: ">", attributes: attrs)
+        nextButton.setAttributedTitle(nextTitle, for: .normal)
+        nextButton.addTarget(self, action: #selector(goToNextSol(_:)), for: .touchUpInside)
+        
+        let stackView = UIStackView(arrangedSubviews: [prevButton, solLabel, nextButton])
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        stackView.spacing = UIStackView.spacingUseSystem
+        
+        navigationItem.titleView = stackView
     }
     
     private func updateViews() {
@@ -132,7 +166,7 @@ class PhotosCollectionViewController: UICollectionViewController
             }
         }
         let completionOp = BlockOperation {
-            defer { self.operations.removeValue(forKey: photoReference.id) }
+            defer { self.operations.removeValue(forKey: photoReference.identifier) }
             
             if let currentIndexPath = self.collectionView?.indexPath(for: cell),
                 currentIndexPath != indexPath {
@@ -140,7 +174,7 @@ class PhotosCollectionViewController: UICollectionViewController
             }
             
             if let image = filterOp.image {
-                cell.imageView.image = image
+                cell.imageView?.image = image
             }
         }
         
@@ -153,8 +187,23 @@ class PhotosCollectionViewController: UICollectionViewController
         imageFilteringQueue.addOperation(filterOp)
         OperationQueue.main.addOperation(completionOp)
         
-        operations[photoReference.id] = fetchOp
+        operations[photoReference.identifier] = fetchOp
     }
 
+    @IBAction func goToPreviousSol(_ sender: Any?) {
+        guard let solDescription = solDescription else { return }
+        guard let solDescriptions = roverInfo?.solDescriptions else { return }
+        guard let index = solDescriptions.index(of: solDescription) else { return }
+        guard index > 0 else { return }
+        self.solDescription = solDescriptions[index-1]
+    }
+    
+    @IBAction func goToNextSol(_ sender: Any?) {
+        guard let solDescription = solDescription else { return }
+        guard let solDescriptions = roverInfo?.solDescriptions else { return }
+        guard let index = solDescriptions.index(of: solDescription) else { return }
+        guard index < solDescriptions.count - 1 else { return }
+        self.solDescription = solDescriptions[index+1]
+    }
     
 }

@@ -22,7 +22,7 @@ class ConcurrentOperation: Operation
     
     private var _state = State.isReady
     
-    private let stateQueue = DispatchQueue(label: "com.CLS.Astronomy.ConcurrentOperationStateQueue")
+    private let stateQueue = DispatchQueue(label: "com.CLS.MarsRover.ConcurrentOperationStateQueue")
     
     var state: State {
         get {

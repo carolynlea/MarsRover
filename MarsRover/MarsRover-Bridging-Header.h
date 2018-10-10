@@ -6,3 +6,4 @@
 #import "SolDescription.h"
 #import "Camera.h"
 #import "ImageCollectionViewCell.h"
+#import "MarsPhoto.h"

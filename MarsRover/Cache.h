@@ -10,13 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Cache : NSObject
+@interface Cache<Key, Value> : NSObject
 
-@property (nonatomic, readonly) NSDictionary *cache;
-@property (nonatomic, readonly) NSString *queueString;
+-(instancetype)init;
 
--(NSDictionary *)cache;
--(void)value;
+-(void)cacheWithValue:(Value)value key:(Key)key;
+-(Value)valueWithKey:(Key)key;
 -(void)clear;
 
 @end

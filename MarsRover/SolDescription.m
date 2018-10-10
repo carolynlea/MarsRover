@@ -10,7 +10,7 @@
 
 @implementation SolDescription
 
--(instancetype)initWithSol:(int)sol totalPhotos:(int)totalPhotos cameras:(NSArray *)cameras
+-(instancetype)initWithSol:(int)sol totalPhotos:(int)totalPhotos cameras:(NSArray<NSString *> *)cameras
 {
     self = [super init];
     if(self)
@@ -21,15 +21,15 @@
     }
     return self;
 }
--(instancetype)initWithDictionary:(NSDictionary *)dictionary
+-(instancetype)initWithDictionary:(NSDictionary<NSString *, id> *)dictionary
 {
     NSString *solString = dictionary[@"sol"];
     int sol = [solString intValue];
     NSString *totalPhotosString = dictionary[@"totalPhotos"];
     int totalPhotos = [totalPhotosString intValue];
-    NSArray *cameras = dictionary[@"cameras"];
+    NSArray<NSString *> *cameras = dictionary[@"cameras"];
     
-    if(!sol || ! totalPhotos || !cameras)
+    if(!sol || !totalPhotos || !cameras)
     {
         return nil;
     }
